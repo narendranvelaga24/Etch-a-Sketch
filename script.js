@@ -19,4 +19,17 @@ function createGrid(size) {
   }
 }
 
-createGrid(16);
+const resetBtn = document.getElementById('resetBtn');
+
+resetBtn.addEventListener('click', () => {
+    let newSize = prompt("Enter new grid size (max 100):");
+    newSize = parseInt(newSize);
+  
+    if (newSize > 0 && newSize <= 100) {
+      createGrid(newSize);
+    } else {
+      alert("Please enter a number between 1 and 100!");
+    }
+  });
+
+createGrid(32);
