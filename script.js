@@ -2,8 +2,8 @@ const container = document.getElementById("container");
 
 function createGrid(size) {
   container.innerHTML = "";
-  container.style.width = "600px";
-  container.style.height = "600px";
+  container.style.width = "90vh";
+  container.style.height = "90vh";
 
   for (let i = 0; i < size * size; i++) {
     const square = document.createElement("div");
@@ -14,8 +14,8 @@ function createGrid(size) {
       square.style.backgroundColor = "black";
     });
 
-    square.style.width = `${600 / size}px`;
-    square.style.height = `${600 / size}px`;
+    square.style.width = `${90 / size}vh`;
+    square.style.height = `${90 / size}vh`;
   }
 }
 
