@@ -25,3 +25,7 @@ body {
   .button {
     text-align: center;
   }
+
+  #resetBtn {
+    background-color: rgb(247, 247, 229);
+  }
