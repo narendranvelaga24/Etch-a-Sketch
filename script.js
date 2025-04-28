@@ -1,5 +1,6 @@
-const container = document.getElementById("container");
+let currentMode = "black";
 
+const container = document.getElementById("container");
 function createGrid(size) {
   container.innerHTML = "";
   container.style.width = "90vh";
@@ -11,7 +12,22 @@ function createGrid(size) {
     container.appendChild(square);
 
     square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = "black";
+      if (currentMode === "black") {
+        square.style.backgroundColor = "black";
+      } else if (currentMode === "random") {
+        square.style.backgroundColor = `rgb(${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )})`;
+      } else if (currentMode === "darken") {
+        let currentOpacity = Number(square.dataset.opacity) || 0;
+        if (currentOpacity < 1) {
+          currentOpacity += 0.1;
+          square.dataset.opacity = currentOpacity;
+          square.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity})`;
+        }
+      }
     });
 
     square.style.width = `${90 / size}vh`;
@@ -19,17 +35,31 @@ function createGrid(size) {
   }
 }
 
-const resetBtn = document.getElementById('resetBtn');
+const resetBtn = document.getElementById("resetBtn");
+resetBtn.addEventListener("click", () => {
+  let newSize = prompt("Enter new grid size (max 100):");
+  newSize = parseInt(newSize);
 
-resetBtn.addEventListener('click', () => {
-    let newSize = prompt("Enter new grid size (max 100):");
-    newSize = parseInt(newSize);
-  
-    if (newSize > 0 && newSize <= 100) {
-      createGrid(newSize);
-    } else {
-      alert("Please enter a number between 1 and 100!");
-    }
-  });
+  if (newSize > 0 && newSize <= 100) {
+    createGrid(newSize);
+  } else {
+    alert("Please enter a number between 1 and 100!");
+  }
+});
 
-createGrid(32);
+const randomColorBtn = document.getElementById("randomColorBtn");
+randomColorBtn.addEventListener("click", () => {
+  currentMode = "random";
+});
+
+const darkenBtn = document.getElementById("darkenBtn");
+darkenBtn.addEventListener("click", () => {
+  currentMode = "darken";
+});
+
+const blackBtn = document.getElementById("blackBtn");
+blackBtn.addEventListener("click", () => {
+  currentMode = "black";
+});
+
+createGrid(8);

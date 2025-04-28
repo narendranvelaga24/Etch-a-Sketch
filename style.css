@@ -9,5 +9,6 @@
     flex: 1 0 auto;
     box-sizing: border-box;
     border: 1px solid lightgray;
+    transition: background-color 0.2s;
   }
   
