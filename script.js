@@ -3,8 +3,8 @@ let currentMode = "black";
 const container = document.getElementById("container");
 function createGrid(size) {
   container.innerHTML = "";
-  container.style.width = "90vh";
-  container.style.height = "90vh";
+  container.style.width = "80vh";
+  container.style.height = "80vh";
 
   for (let i = 0; i < size * size; i++) {
     const square = document.createElement("div");
@@ -30,13 +30,12 @@ function createGrid(size) {
       }
     });
 
-    square.style.width = `${90 / size}vh`;
-    square.style.height = `${90 / size}vh`;
+    square.style.width = `${80 / size}vh`;
+    square.style.height = `${80 / size}vh`;
   }
 }
 
-const resetBtn = document.getElementById("resetBtn");
-resetBtn.addEventListener("click", () => {
+document.getElementById("resetBtn").addEventListener("click", () => {
   let newSize = prompt("Enter new grid size (max 100):");
   newSize = parseInt(newSize);
 
@@ -47,8 +46,7 @@ resetBtn.addEventListener("click", () => {
   }
 });
 
-const randomColorBtn = document.getElementById("randomColorBtn");
-randomColorBtn.addEventListener("click", () => {
+document.getElementById("randomColorBtn").addEventListener("click", () => {
   currentMode = "random";
 });
 
@@ -57,8 +55,7 @@ darkenBtn.addEventListener("click", () => {
   currentMode = "darken";
 });
 
-const blackBtn = document.getElementById("blackBtn");
-blackBtn.addEventListener("click", () => {
+document.getElementById("blackBtn").addEventListener("click", () => {
   currentMode = "black";
 });
 
